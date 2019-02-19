@@ -9,6 +9,10 @@ ENV PATH=$HIVE_HOME/bin:$PATH
 RUN apt-get update && \
     apt-get install -y netcat
 
+ADD docker/scripts /home/lens/scripts
+ADD docker/.bash_profile /
+
+
 
 # Download hive
 RUN curl -s -O http://apache.claz.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz && \
@@ -37,5 +41,3 @@ ADD files/metastore-start.sh /etc/metastore-start.sh
 RUN chmod +x /etc/metastore-start.sh && sleep 1
 
 CMD /etc/metastore-start.sh
-
-

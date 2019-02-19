@@ -1,0 +1,22 @@
+<configuration>
+  <property>
+    <name>lens.server.base.url</name>
+    <value>http://bizops-rna-engg1011.common.blr1.inmobi.com:8098/lensapi/</value>
+    <description>The base url for the lens server</description>
+  </property>
+  <property>
+    <name>lens.client.user.name</name>
+    <value>rajashekhar.c</value>
+    <description>Lens client user name</description>
+  </property>
+ <property>
+    <name>lens.session.cluster.user</name>
+    <value>cas</value>
+    <description>Lens client user name</description>
+  </property>
+  <property>
+    <name>lens.client.dbname</name>
+    <value>default</value>
+    <description>Lens client user name</description>
+  </property>
+</configuration>
