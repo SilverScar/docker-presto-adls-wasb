@@ -6,8 +6,8 @@ ENV HIVE_VERSION=2.3.4
 ENV HIVE_HOME=/usr/local/hive
 ENV PATH=$HIVE_HOME/bin:$PATH
 
-RUN sudo apt-get update && \
-    sudo apt-get install -y netcat
+RUN apt-get update && \
+    apt-get install -y netcat
 
 
 # Download hive
