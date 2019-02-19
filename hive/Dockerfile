@@ -4,6 +4,10 @@ ENV HIVE_VERSION=2.3.4
 ENV HIVE_HOME=/usr/local/hive
 ENV PATH=$HIVE_HOME/bin:$PATH
 
+RUN apt-get update && \
+    apt-get install -y netcat
+
+
 # Download hive
 RUN curl -s -O http://apache.claz.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz && \
 	tar -zxf ./apache-hive-${HIVE_VERSION}-bin.tar.gz && \
@@ -33,5 +37,3 @@ RUN chmod +x /etc/metastore-start.sh && sleep 1
 CMD /etc/metastore-start.sh
 
 
-RUN apt-get update && \
-    apt-get install -y netcat
