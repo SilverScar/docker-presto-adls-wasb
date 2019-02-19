@@ -1,116 +1,101 @@
-ENV refresh="source ~/.bash_profile"
-ENV rf='source /home/lens/scripts/.bash_profile'
-ENV profile="vi ~/.bash_profile"
-ENV pf='vi /home/lens/scripts/.bash_profile'
-ENV ll="ls -l"
-ENV hn="hostname"
-ENV scripts="cd /home/lens/scripts"
 
-
-export LC_CTYPE="en_US.UTF-8"
-ENV hl="hadoop fs -ls"
-ENV hc="hadoop fs -cat"
-ENV hg="hadoop fs -get"
-ENV hp="hadoop fs -put"
-ENV hrm="hadoop fs -rm"
-ENV hrmr="hadoop fs -rm -r -skipTrash"
-
-ENV pigr="sudo -u reports pig -Dmapred.job.queue.name=reports"
-ENV pigc="sudo -u cas pig -Dmapred.job.queue.name=pmatics"
-ENV pigb="sudo -u brand pig -Dmapred.job.queue.name=brand"
-ENV pigl="pig -x local"
-
-ENV nobcat='/home/lens/scripts/nobcat.sh'
-ENV cobcat='/home/lens/scripts/cobcat.sh'
-ENV hduu="hadoop fs -du"
-ENV hdu="hadoop fs -du -h"
-
-
-
-
-
-ENV rep="/home/lens/scripts/rep.sh"
-ENV rerun="/home/lens/scripts/rerun.sh"
-ENV rrf="/home/lens/scripts/rerunFull.sh"
-ENV rr="rerun"
-ENV killer='/home/lens/scripts/killer.sh'
-ENV url="/home/lens/scripts/historyUrl.sh"
-ENV joburl="/home/lens/scripts/jobUrl.sh"
-ENV coloUrl="/home/lens/scripts/coloUrl.sh"
-ENV occ='/home/lens/scripts/occ.sh'
-ENV uac='/home/lens/scripts/uac.sh'
-ENV uacc='vi /home/lens/scripts/uac.sh'
-ENV a='ENV'
-ENV aa='/home/lens/scripts/aa.sh'
-ENV aaa='/home/lens/scripts/aaa.sh'
-ENV jobUrl='/home/lens/scripts/jobUrl.sh'
-
-ENV sudocasput='hadoop fs -put'
-ENV sch='cd /home/lens/scripts'
-ENV ht='/home/lens/scripts/ht.sh'
-ENV conc='/home/lens/scripts/conc.sh'
-ENV allruns='/home/lens/scripts/allruns.sh'
-ENV oji='/home/lens/scripts/oji.sh'
-
-ENV LL='ll'
-ENV PIG='pig'
-ENV CD='cd'
-ENV PWD='pwd'
-ENV PF='pf'
-ENV RF='rf'
-ENV HL='hl'
-ENV HC='hc'
-ENV HT='ht'
-ENV cobp='occ CAS-local-cbase-generator'
-ENV COBP='cobp'
-ENV cobpr='occ CAS-local-cbase-generator-regen'
-ENV cobh='occ CAS-cbase-hourly-aggregate'
-ENV cobho='occ cob-hourly-aggregate-process'
-ENV cobd='occ COB-daily-aggregate-process'
-ENV cobdr='occ COB-daily-rtbd-china-aggregate-process'
-ENV cobm='occ COB-monthly-aggregate-process'
-ENV cobb='occ CAS-RR-backup-process'
-ENV creative='occ CAS-rtbd-adcontent-tar-generator'
-ENV rmc='occ CAS-rmc-daily-generator'
-ENV fc='occ brand-fcreporting'
-ENV inv='occ brand-invsizing-fetcher'
-ENV loader='occ brand-invsizing-loader'
-ENV uu='occ brand-unique-users-report-loader'
-ENV footfall='occ footfall-attribution'
-ENV audience='occ brand-pds-attribute-generator-process'
-
-ENV schf='hadoop fs'
-ENV schfrm='hadoop fs -rm -r -skipTrash'
-ENV IEPD='iepd'
-ENV IEFD='iefd'
-ENV HDU='hdu'
-ENV NOBCAT='nobcat'
-ENV COBCAT='cobcat'
-ENV fq='hadoop fs -count -q /secure/projects/cas'
-ENV hnp='/home/lens/scripts/hnp.sh'
-ENV cobraw='hadoop fs -ls /projects/cas/cbase-aggregate-logs/'
-ENV cobhour='hadoop fs -ls /projects/cas/cob-generation/cbase_hourly_aggregate/'
-ENV cobday='hadoop fs -ls /projects/cas/cob-generation/cob_daily_aggregate/'
-ENV cobmonth='hadoop fs -ls /projects/cas/cob-generation/cob_monthly_aggregate/'
-ENV casp='/home/lens/scripts/casp.sh'
-ENV pwdd='/home/lens/scripts/pwdd.sh'
-ENV syn='/home/lens/scripts/sync.sh'
-ENV push='/home/lens/scripts/push.sh'
-ENV yl='/home/lens/scripts/yarnLogs.sh'
-ENV yk='/home/lens/scripts/yarnKill.sh'
-ENV scpp='/home/lens/scripts/scpp.sh'
-
-ENV cas='export USER=cas'
-ENV brand='export USER=brand;rf'
-ENV user='echo $USER'
-ENV USER='user'
-ENV mp='export USER=merlin-perf'
-
-
-ENV lr=/home/lens/scripts/lensrestart.sh
-ENV tailc='tail -f /usr/local/lens/client/logs/lensclient.log'
-ENV tails='tail -f /usr/local/lens/server/logs/lensserver.log'
-ENV a='ENV'
-ENV lens='/home/lens/scripts/lens/lens.sh'
-ENV site='vi /usr/local/lens/server/conf/lens-site.xml'
-ENV ctl='vi /usr/local/lens/server/bin/lens-ctl'
+RUN echo 'alias refresh="source ~/.bash_profile"' >> ~/.bashrc
+RUN echo 'alias rf="source /home/lens/scripts/.bash_profile"' >> ~/.bashrc
+RUN echo 'alias profile="vi ~/.bash_profile"' >> ~/.bashrc
+RUN echo 'alias pf="vi /home/lens/scripts/.bash_profile"' >> ~/.bashrc
+RUN echo 'alias ll="ls -l"' >> ~/.bashrc
+RUN echo 'alias hn="hostname"' >> ~/.bashrc
+RUN echo 'alias scripts="cd /home/lens/scripts"' >> ~/.bashrc
+RUN echo 'alias hl="hadoop fs -ls"' >> ~/.bashrc
+RUN echo 'alias hc="hadoop fs -cat"' >> ~/.bashrc
+RUN echo 'alias hg="hadoop fs -get"' >> ~/.bashrc
+RUN echo 'alias hp="hadoop fs -put"' >> ~/.bashrc
+RUN echo 'alias hrm="hadoop fs -rm"' >> ~/.bashrc
+RUN echo 'alias hrmr="hadoop fs -rm -r -skipTrash"' >> ~/.bashrc
+RUN echo 'alias pigr="sudo -u reports pig -Dmapred.job.queue.name=reports"' >> ~/.bashrc
+RUN echo 'alias pigc="sudo -u cas pig -Dmapred.job.queue.name=pmatics"' >> ~/.bashrc
+RUN echo 'alias pigb="sudo -u brand pig -Dmapred.job.queue.name=brand"' >> ~/.bashrc
+RUN echo 'alias pigl="pig -x local"' >> ~/.bashrc
+RUN echo 'alias nobcat="/home/lens/scripts/nobcat.sh"' >> ~/.bashrc
+RUN echo 'alias cobcat="/home/lens/scripts/cobcat.sh"' >> ~/.bashrc
+RUN echo 'alias hduu="hadoop fs -du"' >> ~/.bashrc
+RUN echo 'alias hdu="hadoop fs -du -h"' >> ~/.bashrc
+RUN echo 'alias rep="/home/lens/scripts/rep.sh"' >> ~/.bashrc
+RUN echo 'alias rerun="/home/lens/scripts/rerun.sh"' >> ~/.bashrc
+RUN echo 'alias rrf="/home/lens/scripts/rerunFull.sh"' >> ~/.bashrc
+RUN echo 'alias rr="rerun"' >> ~/.bashrc
+RUN echo 'alias killer="/home/lens/scripts/killer.sh"' >> ~/.bashrc
+RUN echo 'alias url="/home/lens/scripts/historyUrl.sh"' >> ~/.bashrc
+RUN echo 'alias joburl="/home/lens/scripts/jobUrl.sh"' >> ~/.bashrc
+RUN echo 'alias coloUrl="/home/lens/scripts/coloUrl.sh"' >> ~/.bashrc
+RUN echo 'alias occ="/home/lens/scripts/occ.sh"' >> ~/.bashrc
+RUN echo 'alias uac="/home/lens/scripts/uac.sh"' >> ~/.bashrc
+RUN echo 'alias uacc="vi /home/lens/scripts/uac.sh"' >> ~/.bashrc
+RUN echo 'alias a="ENV"' >> ~/.bashrc
+RUN echo 'alias aa="/home/lens/scripts/aa.sh"' >> ~/.bashrc
+RUN echo 'alias aaa="/home/lens/scripts/aaa.sh"' >> ~/.bashrc
+RUN echo 'alias jobUrl="/home/lens/scripts/jobUrl.sh"' >> ~/.bashrc
+RUN echo 'alias sudocasput="hadoop fs -put"' >> ~/.bashrc
+RUN echo 'alias sch="cd /home/lens/scripts"' >> ~/.bashrc
+RUN echo 'alias ht="/home/lens/scripts/ht.sh"' >> ~/.bashrc
+RUN echo 'alias conc="/home/lens/scripts/conc.sh"' >> ~/.bashrc
+RUN echo 'alias allruns="/home/lens/scripts/allruns.sh"' >> ~/.bashrc
+RUN echo 'alias oji="/home/lens/scripts/oji.sh"' >> ~/.bashrc
+RUN echo 'alias LL="ll"' >> ~/.bashrc
+RUN echo 'alias PIG="pig"' >> ~/.bashrc
+RUN echo 'alias CD="cd"' >> ~/.bashrc
+RUN echo 'alias PWD="pwd"' >> ~/.bashrc
+RUN echo 'alias PF="pf"' >> ~/.bashrc
+RUN echo 'alias RF="rf"' >> ~/.bashrc
+RUN echo 'alias HL="hl"' >> ~/.bashrc
+RUN echo 'alias HC="hc"' >> ~/.bashrc
+RUN echo 'alias HT="ht"' >> ~/.bashrc
+RUN echo 'alias cobp="occ CAS-local-cbase-generator"' >> ~/.bashrc
+RUN echo 'alias COBP="cobp"' >> ~/.bashrc
+RUN echo 'alias cobpr="occ CAS-local-cbase-generator-regen"' >> ~/.bashrc
+RUN echo 'alias cobh="occ CAS-cbase-hourly-aggregate"' >> ~/.bashrc
+RUN echo 'alias cobho="occ cob-hourly-aggregate-process"' >> ~/.bashrc
+RUN echo 'alias cobd="occ COB-daily-aggregate-process"' >> ~/.bashrc
+RUN echo 'alias cobdr="occ COB-daily-rtbd-china-aggregate-process"' >> ~/.bashrc
+RUN echo 'alias cobm="occ COB-monthly-aggregate-process"' >> ~/.bashrc
+RUN echo 'alias cobb="occ CAS-RR-backup-process"' >> ~/.bashrc
+RUN echo 'alias creative="occ CAS-rtbd-adcontent-tar-generator"' >> ~/.bashrc
+RUN echo 'alias rmc="occ CAS-rmc-daily-generator"' >> ~/.bashrc
+RUN echo 'alias fc="occ brand-fcreporting"' >> ~/.bashrc
+RUN echo 'alias inv="occ brand-invsizing-fetcher"' >> ~/.bashrc
+RUN echo 'alias loader="occ brand-invsizing-loader"' >> ~/.bashrc
+RUN echo 'alias uu="occ brand-unique-users-report-loader"' >> ~/.bashrc
+RUN echo 'alias footfall="occ footfall-attribution"' >> ~/.bashrc
+RUN echo 'alias audience="occ brand-pds-attribute-generator-process"' >> ~/.bashrc
+RUN echo 'alias schf="hadoop fs"' >> ~/.bashrc
+RUN echo 'alias schfrm="hadoop fs -rm -r -skipTrash"' >> ~/.bashrc
+RUN echo 'alias IEPD="iepd"' >> ~/.bashrc
+RUN echo 'alias IEFD="iefd"' >> ~/.bashrc
+RUN echo 'alias HDU="hdu"' >> ~/.bashrc
+RUN echo 'alias NOBCAT="nobcat"' >> ~/.bashrc
+RUN echo 'alias COBCAT="cobcat"' >> ~/.bashrc
+RUN echo 'alias fq="hadoop fs -count -q /secure/projects/cas"' >> ~/.bashrc
+RUN echo 'alias hnp="/home/lens/scripts/hnp.sh"' >> ~/.bashrc
+RUN echo 'alias cobraw="hadoop fs -ls /projects/cas/cbase-aggregate-logs/"' >> ~/.bashrc
+RUN echo 'alias cobhour="hadoop fs -ls /projects/cas/cob-generation/cbase_hourly_aggregate/"' >> ~/.bashrc
+RUN echo 'alias cobday="hadoop fs -ls /projects/cas/cob-generation/cob_daily_aggregate/"' >> ~/.bashrc
+RUN echo 'alias cobmonth="hadoop fs -ls /projects/cas/cob-generation/cob_monthly_aggregate/"' >> ~/.bashrc
+RUN echo 'alias casp="/home/lens/scripts/casp.sh"' >> ~/.bashrc
+RUN echo 'alias pwdd="/home/lens/scripts/pwdd.sh"' >> ~/.bashrc
+RUN echo 'alias syn="/home/lens/scripts/sync.sh"' >> ~/.bashrc
+RUN echo 'alias push="/home/lens/scripts/push.sh"' >> ~/.bashrc
+RUN echo 'alias yl="/home/lens/scripts/yarnLogs.sh"' >> ~/.bashrc
+RUN echo 'alias yk="/home/lens/scripts/yarnKill.sh"' >> ~/.bashrc
+RUN echo 'alias scpp="/home/lens/scripts/scpp.sh"' >> ~/.bashrc
+RUN echo 'alias cas="export USER=cas"' >> ~/.bashrc
+RUN echo 'alias brand="export USER=brand;rf"' >> ~/.bashrc
+RUN echo 'alias user="echo $USER"' >> ~/.bashrc
+RUN echo 'alias USER="user"' >> ~/.bashrc
+RUN echo 'alias mp="export USER=merlin-perf"' >> ~/.bashrc
+RUN echo 'alias lr=/home/lens/scripts/lensrestart.sh' >> ~/.bashrc
+RUN echo 'alias tailc="tail -f /usr/local/lens/client/logs/lensclient.log"' >> ~/.bashrc
+RUN echo 'alias tails="tail -f /usr/local/lens/server/logs/lensserver.log"' >> ~/.bashrc
+RUN echo 'alias a="alias"' >> ~/.bashrc
+RUN echo 'alias lens="/home/lens/scripts/lens/lens.sh"' >> ~/.bashrc
+RUN echo 'alias site="vi /usr/local/lens/server/conf/lens-site.xml"' >> ~/.bashrc
+RUN echo 'alias ctl="vi /usr/local/lens/server/bin/lens-ctl"' >> ~/.bashrc
