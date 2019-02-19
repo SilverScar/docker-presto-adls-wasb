@@ -49,7 +49,7 @@ RUN echo 'bind \"set completion-ignore-case on\"'
 RUN PS1='\[\e[0;33m\]\h:\W \u\$\[\e[m\] '
 
 
------------------------------------------------------------
+#-----------------------------------------------------------
 RUN echo 'alias refresh="source ~/.bash_profile"' >> ~/.bashrc
 RUN echo 'alias rf="source /home/lens/scripts/.bash_profile"' >> ~/.bashrc
 RUN echo 'alias profile="vi ~/.bash_profile"' >> ~/.bashrc
