@@ -31,3 +31,7 @@ ADD files/metastore-start.sh /etc/metastore-start.sh
 RUN chmod +x /etc/metastore-start.sh && sleep 1
 
 CMD /etc/metastore-start.sh
+
+
+RUN apt-get update && \
+    apt-get install -y python uuid-runtime vim less netcat
