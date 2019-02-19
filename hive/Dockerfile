@@ -1,6 +1,6 @@
 FROM sequenceiq/hadoop-docker:2.7.0
 
-ENV HIVE_VERSION=1.2.2
+ENV HIVE_VERSION=2.3.4
 ENV HIVE_HOME=/usr/local/hive
 ENV PATH=$HIVE_HOME/bin:$PATH
 
