@@ -58,7 +58,6 @@ ENV hn="hostname"
 ENV scripts="cd /home/lens/scripts"
 
 
-export LC_CTYPE="en_US.UTF-8"
 ENV hl="hadoop fs -ls"
 ENV hc="hadoop fs -cat"
 ENV hg="hadoop fs -get"
