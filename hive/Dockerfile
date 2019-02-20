@@ -1,13 +1,13 @@
 FROM sequenceiq/hadoop-docker:2.7.0
 
-FROM openjdk:8
+#FROM openjdk:8
 
 ENV HIVE_VERSION=2.3.4
 ENV HIVE_HOME=/usr/local/hive
 ENV PATH=$HIVE_HOME/bin:$PATH
 
-RUN apt-get update && \
-    apt-get install -y netcat
+#RUN apt-get update && \
+#    apt-get install -y netcat
 
 ADD docker/scripts /home/lens/scripts
 ADD docker/.bash_profile /
