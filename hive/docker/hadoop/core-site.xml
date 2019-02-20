@@ -1,0 +1,44 @@
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>wasbs://batchstore@idspdatastorage.blob.core.windows.net</value>
+        <description>NameNode URI</description>
+    </property>
+    <property>
+        <name>fs.AbstractFileSystem.wasb.impl</name>
+        <value>org.apache.hadoop.fs.azure.Wasb</value>
+    </property>
+    <property>
+        <name>fs.AbstractFileSystem.wasbs.impl</name>
+        <value>org.apache.hadoop.fs.azure.Wasbs</value>
+    </property>
+    <property>
+        <name>fs.blob.impl</name>
+        <value>com.inmobi.data.CustomBlobFileSystem</value>
+    </property>
+    <property>
+        <name>fs.azure.account.key.idspdatastorage.blob.core.windows.net</name>
+        <value>dvldRt8YEfz2IE5ZC5cbddwz0MdKNQFkrgOLCetsSTpS2wEEauVguE+nnVOfE4cUN3BTWD/nYYjhuTZPCHPikg==</value>
+    </property>
+    <property>
+        <name>io.file.buffer.size</name>
+        <value>131072</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.oozie.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.oozie.groups</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.falcon.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.falcon.groups</name>
+        <value>*</value>
+    </property>
+</configuration>
+
