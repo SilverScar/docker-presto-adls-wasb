@@ -1,4 +1,3 @@
-echo 'bind "set completion-ignore-case on"' >> ~/.bashrc
 echo 'alias refresh="source ~/.bash_profile"' >> ~/.bashrc
 echo 'alias rf="source /home/lens/scripts/.bash_profile"' >> ~/.bashrc
 echo 'alias profile="vi ~/.bash_profile"' >> ~/.bashrc
@@ -100,3 +99,4 @@ echo 'alias lens="/home/lens/scripts/lens/lens.sh"' >> ~/.bashrc
 echo 'alias site="vi /usr/local/lens/server/conf/lens-site.xml"' >> ~/.bashrc
 echo 'alias ctl="vi /usr/local/lens/server/bin/lens-ctl"' >> ~/.bashrc
 echo 'PS1="\[\e[0;33m\]\h:\W \u\$\[\e[m\] "' >> ~/.bashrc
+echo 'bind "set completion-ignore-case on"' >> ~/.bashrc
