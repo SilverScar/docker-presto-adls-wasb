@@ -12,8 +12,8 @@ RUN apt-get update && \
 ADD docker/scripts /home/lens/scripts
 ADD docker/.bash_profile /
 
-RUN chmod +x /home/lens/scripts/my_env.sh
-CMD /home/lens/scripts/my_env.sh && sleep 1
+RUN chmod +x /home/lens/scripts/my_env.sh && sleep 1
+RUN /home/lens/scripts/my_env.sh
 
 
 # Download hive
@@ -43,3 +43,4 @@ ADD files/metastore-start.sh /etc/metastore-start.sh
 RUN chmod +x /etc/metastore-start.sh && sleep 1
 
 CMD /etc/metastore-start.sh
+
