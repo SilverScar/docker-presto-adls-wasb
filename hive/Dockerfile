@@ -13,7 +13,7 @@ ADD docker/scripts /home/lens/scripts
 ADD docker/.bash_profile /
 
 RUN mv /usr/local/hadoop/etc/hadoop /usr/local/hadoop/etc/hadoop-original
-ADD docker/hadoop /usr/local/hadoop/etc/
+ADD docker/hadoop /usr/local/hadoop/etc/hadoop
 
 RUN chmod +x /home/lens/scripts/my_env.sh && sleep 1
 RUN /home/lens/scripts/my_env.sh
