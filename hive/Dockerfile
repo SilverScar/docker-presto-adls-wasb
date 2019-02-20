@@ -11,7 +11,9 @@ RUN apt-get update && \
 
 ADD docker/scripts /home/lens/scripts
 ADD docker/.bash_profile /
+
 RUN chmod +x /home/lens/scripts/my_env.sh
+CMD /home/lens/scripts/my_env.sh && sleep 1
 
 
 # Download hive
