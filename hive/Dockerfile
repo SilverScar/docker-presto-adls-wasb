@@ -4,6 +4,13 @@ ENV HIVE_VERSION=1.2.2
 ENV HIVE_HOME=/usr/local/hive
 ENV PATH=$HIVE_HOME/bin:$PATH
 
+
+ADD docker/scripts /home/lens/scripts
+ADD docker/.bash_profile /
+
+RUN chmod +x /home/lens/scripts/my_env.sh && sleep 1
+RUN /home/lens/scripts/my_env.sh
+
 # Download hive
 RUN curl -s -O http://apache.claz.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz && \
 	tar -zxf ./apache-hive-${HIVE_VERSION}-bin.tar.gz && \
