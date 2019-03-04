@@ -58,7 +58,7 @@ RUN mkdir -p ${tmpdir} ${logdir}
 
 
 RUN cd $TMPDIR && \
-     wget http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar && \
+     curl -s -LO  http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar && \
      mv $TMPDIR/mysql-connector-java-5.1.30.jar $TMPDIR/mysql-connector-java.jar && \
      cp $TMPDIR/mysql-connector-java.jar $HIVE_HOME/lib/
 
