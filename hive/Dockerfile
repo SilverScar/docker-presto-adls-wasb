@@ -7,7 +7,7 @@ ENV HADOOP_HOME=/usr/local/hadoop
 ENV PATH=$PATH:$HADOOP_HOME/bin
 
 ADD docker/scripts /home/lens/scripts
-ADD docker/.bash_profile /
+#ADD docker/.bash_profile /
 
 RUN chmod +x /home/lens/scripts/my_env.sh && sleep 1
 RUN /home/lens/scripts/my_env.sh
