@@ -15,6 +15,12 @@ RUN /home/lens/scripts/my_env.sh
 RUN mv docker/hadoop/hadoop-env.sh $HADOOP_HOME/etc/hadoop/
 RUN mv docker/hadoop/core-site.xml $HADOOP_HOME/etc/hadoop/
 
+RUN cd $HADOOP_HOME/share/hadoop/tools/lib && \
+	curl -O http://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/2.0.0/azure-storage-2.0.0.jar && \
+    curl -O http://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.3/hadoop-azure-2.7.3.jar && \
+	curl -O http://repo1.maven.org/maven2/com/microsoft/azure/azure-data-lake-store-sdk/2.1.5/azure-data-lake-store-sdk-2.1.5.jar && \
+    curl -O http://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure-datalake/3.0.0-alpha3/hadoop-azure-datalake-3.0.0-alpha3.jar
+
 # Download hive
 RUN curl -s -O http://apache.claz.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz && \
 	tar -zxf ./apache-hive-${HIVE_VERSION}-bin.tar.gz && \
@@ -42,3 +48,4 @@ ADD files/metastore-start.sh /etc/metastore-start.sh
 RUN chmod +x /etc/metastore-start.sh && sleep 1
 
 CMD /etc/metastore-start.sh
+
