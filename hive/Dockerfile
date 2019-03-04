@@ -48,6 +48,37 @@ RUN yum erase -y jdk && \
 
 EXPOSE 9083
 
+
+
+#------------------------------------------------------------------------
+
+ENV tmpdir /tmp
+ENV logdir /opt/inmobi/logs/mysql
+RUN mkdir -p ${tmpdir} ${logdir}
+
+
+
+RUN apt-get update
+RUN apt-get -y install mysql-client mysql-server
+
+RUN sed -i -e"/^bind-address/d" /etc/mysql/my.cnf
+RUN sed -i -e "s/^port\s*=\s*3306/port = 8032/g" /etc/mysql/my.cnf
+
+
+
+ADD docker/mysql_startup.sh ${tmpdir}/mysql_startup.sh
+RUN chmod +x ${tmpdir}/mysql_startup.sh
+
+
+ENV TMPDIR=/tmp
+
+RUN cd $TMPDIR && \
+     wget http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar && \
+     mv $TMPDIR/mysql-connector-java-5.1.30.jar $TMPDIR/mysql-connector-java.jar && \
+     cp $TMPDIR/mysql-connector-java.jar $HIVE_HOME/lib/
+#------------------------------------------------------------------------------------
+
+
 ADD files/metastore-start.sh /etc/metastore-start.sh
 RUN chmod +x /etc/metastore-start.sh && sleep 1
 
