@@ -12,8 +12,12 @@ ADD docker/scripts /home/lens/scripts
 RUN chmod +x /home/lens/scripts/my_env.sh && sleep 1
 RUN /home/lens/scripts/my_env.sh
 
-ADD docker/hadoop/hadoop-env.sh $HADOOP_HOME/etc/hadoop/ && sleep 1
-ADD docker/hadoop/core-site.xml $HADOOP_HOME/etc/hadoop/ && sleep 1
+
+ADD docker/hadoop/hadoop-env.sh /tmp/
+ADD docker/hadoop/core-site.xml /tmp/
+
+RUN cp /tmp/hadoop-env.sh $HADOOP_HOME/etc/hadoop/
+RUN cp /tmp/core-site.xml $HADOOP_HOME/etc/hadoop/
 
 RUN cd $HADOOP_HOME/share/hadoop/tools/lib && \
 	curl -O http://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/2.0.0/azure-storage-2.0.0.jar && \
