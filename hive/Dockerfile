@@ -58,7 +58,7 @@ RUN mkdir -p ${tmpdir} ${logdir}
 
 
 RUN yum clean all
-RUN yum -y update
+#RUN yum -y update
 RUN yum -y install mysql-client mysql-server
 
 RUN sed -i -e"/^bind-address/d" /etc/mysql/my.cnf
