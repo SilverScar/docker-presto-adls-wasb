@@ -57,7 +57,7 @@ ENV logdir /opt/inmobi/logs/mysql
 RUN mkdir -p ${tmpdir} ${logdir}
 
 
-RUM yum clean
+RUN yum clean
 RUN yum -y update
 RUN yum -y install mysql-client mysql-server
 
