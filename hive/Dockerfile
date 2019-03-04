@@ -1,6 +1,6 @@
 FROM sequenceiq/hadoop-docker:2.7.0
 
-ENV HIVE_VERSION=1.2.2
+ENV HIVE_VERSION=2.3.4
 ENV HIVE_HOME=/usr/local/hive
 ENV PATH=$HIVE_HOME/bin:$PATH
 ENV HADOOP_HOME=/usr/local/hadoop
@@ -12,8 +12,8 @@ ADD docker/scripts /home/lens/scripts
 RUN chmod +x /home/lens/scripts/my_env.sh && sleep 1
 RUN /home/lens/scripts/my_env.sh
 
-ADD docker/hadoop/hadoop-env.sh $HADOOP_HOME/etc/hadoop/
-ADD docker/hadoop/core-site.xml $HADOOP_HOME/etc/hadoop/
+ADD docker/hadoop/hadoop-env.sh $HADOOP_HOME/etc/hadoop/ && sleep 1
+ADD docker/hadoop/core-site.xml $HADOOP_HOME/etc/hadoop/ && sleep 1
 
 RUN cd $HADOOP_HOME/share/hadoop/tools/lib && \
 	curl -O http://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/2.0.0/azure-storage-2.0.0.jar && \
