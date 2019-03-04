@@ -52,9 +52,9 @@ EXPOSE 9083
 
 #------------------------------------------------------------------------
 
-ENV tmpdir /tmp
+ENV TMPDIR /tmp
 ENV logdir /opt/inmobi/logs/mysql
-RUN mkdir -p ${tmpdir} ${logdir}
+RUN mkdir -p ${logdir}
 
 
 RUN cd $TMPDIR && \
