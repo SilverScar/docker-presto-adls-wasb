@@ -57,8 +57,8 @@ ENV logdir /opt/inmobi/logs/mysql
 RUN mkdir -p ${tmpdir} ${logdir}
 
 
-
-RUN yum update
+RUM yum clean
+RUN yum -y update
 RUN yum -y install mysql-client mysql-server
 
 RUN sed -i -e"/^bind-address/d" /etc/mysql/my.cnf
