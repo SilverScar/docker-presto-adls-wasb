@@ -57,31 +57,22 @@ ENV logdir /opt/inmobi/logs/mysql
 RUN mkdir -p ${tmpdir} ${logdir}
 
 
-RUN yum clean all
-#RUN yum -y update
-RUN yum -y install mysql-client mysql-server
-RUN yum clean all
-
-RUN sed -i -e"/^bind-address/d" /etc/mysql/my.cnf
-RUN sed -i -e "s/^port\s*=\s*3306/port = 8032/g" /etc/mysql/my.cnf
-
-
-
-ADD docker/mysql_startup.sh ${tmpdir}/mysql_startup.sh
-RUN chmod +x ${tmpdir}/mysql_startup.sh
-
-
-ENV TMPDIR=/tmp
-
 RUN cd $TMPDIR && \
      wget http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar && \
      mv $TMPDIR/mysql-connector-java-5.1.30.jar $TMPDIR/mysql-connector-java.jar && \
      cp $TMPDIR/mysql-connector-java.jar $HIVE_HOME/lib/
+
+ADD docker/mysql_startup.sh ${tmpdir}/mysql_startup.sh
+#RUN chmod +x ${tmpdir}/mysql_startup.sh
+
+
+ENV TMPDIR=/tmp
+
 #------------------------------------------------------------------------------------
 
 
 ADD files/metastore-start.sh /etc/metastore-start.sh
 RUN chmod +x /etc/metastore-start.sh && sleep 1
 
-CMD /etc/metastore-start.sh
+#CMD /etc/metastore-start.sh
 
