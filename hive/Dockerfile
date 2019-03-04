@@ -3,13 +3,17 @@ FROM sequenceiq/hadoop-docker:2.7.0
 ENV HIVE_VERSION=1.2.2
 ENV HIVE_HOME=/usr/local/hive
 ENV PATH=$HIVE_HOME/bin:$PATH
-
+ENV HADOOP_HOME=/usr/local/hadoop
+ENV PATH=$PATH:$HADOOP_HOME/bin
 
 ADD docker/scripts /home/lens/scripts
 ADD docker/.bash_profile /
 
 RUN chmod +x /home/lens/scripts/my_env.sh && sleep 1
 RUN /home/lens/scripts/my_env.sh
+
+RUN mv docker/hadoop/hadoop-env.sh $HADOOP_HOME/etc/hadoop/
+RUN mv docker/hadoop/core-site.xml $HADOOP_HOME/etc/hadoop/
 
 # Download hive
 RUN curl -s -O http://apache.claz.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz && \
