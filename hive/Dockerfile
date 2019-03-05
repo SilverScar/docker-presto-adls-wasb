@@ -87,7 +87,7 @@ ENV PRESTO_DATA_DIR /opt/presto/data
 #RUN apt-get update && \
 #    apt-get install -y python uuid-runtime vim less
 
-RUN yum groupinstall -y "Development Tools"
+RUN yum groupinstall -y "Development Tools"; yum clean all
 
 # Download Presto
 RUN curl -s -O https://repo1.maven.org/maven2/com/facebook/presto/presto-server/$PRESTO_VERSION/presto-server-$PRESTO_VERSION.tar.gz && \
