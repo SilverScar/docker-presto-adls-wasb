@@ -93,5 +93,5 @@ RUN yum groupinstall -y "Development Tools"; yum clean all
 # Download Presto
 RUN mkdir -p $PRESTO_SERVER_DIR && \
     cd $PRESTO_SERVER_DIR && \
-    curl -O https://repo1.maven.org/maven2/com/facebook/presto/presto-server/0.215/presto-server-0.215.tar.gz && \
+    curl -LO https://repo1.maven.org/maven2/com/facebook/presto/presto-server/0.215/presto-server-0.215.tar.gz && \
     tar xvf presto-server-$PRESTO_VERSION.tar.gz
