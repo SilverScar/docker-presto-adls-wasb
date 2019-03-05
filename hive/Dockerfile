@@ -106,11 +106,7 @@ RUN mkdir -p $PRESTO_CLIENT_DIR && \
 # Create directories
 RUN mkdir -p $PRESTO_SERVER_DIR && \
     mkdir -p $PRESTO_DATA_DIR && \
-    mkdir -p $PRESTO_SERVER_DIR/etc/catalog && \
-    cp -r presto-server-$PRESTO_VERSION/* $PRESTO_SERVER_DIR && \
-    rm -r presto-server-$PRESTO_VERSION && \
-    rm presto-server-$PRESTO_VERSION.tar.gz && \
-    mv presto $PRESTO_SERVER_DIR/
+    mkdir -p $PRESTO_SERVER_DIR/etc/catalog &&
 
 # Download specific jars needed for ADLS and WASB and not included in Presto
 # hadoop-azure-2.7.3.jar depends on azure-storage-2.0.0.jar since it implements the startCopyFromBlob which was removed from later versions
