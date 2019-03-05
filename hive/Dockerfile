@@ -90,3 +90,8 @@ ENV PRESTO_DATA_DIR /opt/presto/data
 
 RUN yum groupinstall -y "Development Tools"; yum clean all
 
+# Download Presto
+RUN mkdir -p $PRESTO_SERVER_DIR && \
+    cd $PRESTO_SERVER_DIR && \
+    curl -O https://repo1.maven.org/maven2/com/facebook/presto/presto-server/$PRESTO_VERSION/presto-server-$PRESTO_VERSION.tar.gz && \
+    tar xvf presto-server-$PRESTO_VERSION.tar.gz
