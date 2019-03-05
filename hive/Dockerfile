@@ -96,7 +96,7 @@ RUN mkdir -p $PRESTO_DIR && \
     tar xvf presto-server-$PRESTO_VERSION.tar.gz
 
 # Download Presto CLI
-RUN cd PRESTO_DIR && \
+RUN cd $PRESTO_DIR && \
     curl -O http://repo1.maven.org/maven2/com/facebook/presto/presto-cli/$PRESTO_VERSION/presto-cli-$PRESTO_VERSION-executable.jar && \
     mv presto-cli-$PRESTO_VERSION-executable.jar presto && \
     chmod +x presto
