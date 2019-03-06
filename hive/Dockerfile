@@ -47,7 +47,7 @@ RUN cd $HIVE_HOME/lib && \
 # Install JDK 1.8 since Azure Data Lake Store JARs are compiled using JDK 1.8
 RUN yum erase -y jdk
 
-RUN cp docker/jdk-8u181-linux-x64.rpm /tmp/
+ADD cp docker/jdk-8u181-linux-x64.rpm /tmp/
 
 RUN	cd /tmp && \
 	rpm -i jdk-8u131-linux-x64.rpm && \
