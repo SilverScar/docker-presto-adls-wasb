@@ -108,10 +108,9 @@ RUN cd $PRESTO_DIR && \
     chmod +x presto
 
 # Create directories
-RUN mkdir -p $PRESTO_DATA_DIR
-    # && \
-    # mkdir -p $PRESTO_DIR/etc/catalog && \
-    # mkdir -p $PRESTO_DIR/plugin/hive-hadoop2
+RUN mkdir -p $PRESTO_DATA_DIR && \
+    mkdir -p $PRESTO_DIR/etc/catalog && \
+    mkdir -p $PRESTO_DIR/plugin/hive-hadoop2
 
 # Download specific jars needed for ADLS and WASB and not included in Presto
 # hadoop-azure-2.7.3.jar depends on azure-storage-2.0.0.jar since it implements the startCopyFromBlob which was removed from later versions
