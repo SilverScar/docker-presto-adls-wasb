@@ -7,7 +7,7 @@ ENV HADOOP_HOME=/usr/local/hadoop
 ENV PATH=$PATH:$HADOOP_HOME/bin
 
 ENV TMPDIR /tmp
-RUN mkdir -p ${TMPDIR}
+
 
 
 ADD docker/scripts /home/lens/scripts
@@ -47,7 +47,7 @@ RUN cd $HIVE_HOME/lib && \
 # Install JDK 1.8 since Azure Data Lake Store JARs are compiled using JDK 1.8
 RUN yum erase -y jdk
 
-ADD docker/jdk-8u181-linux-x64.rpm /tmp/ && \
+RUN cp docker/jdk-8u181-linux-x64.rpm /tmp/ && \
 	cd /tmp && \
 	rpm -i jdk-8u131-linux-x64.rpm && \
 	rm jdk-8u131-linux-x64.rpm
