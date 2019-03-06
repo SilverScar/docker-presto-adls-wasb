@@ -6,6 +6,10 @@ ENV PATH=$HIVE_HOME/bin:$PATH
 ENV HADOOP_HOME=/usr/local/hadoop
 ENV PATH=$PATH:$HADOOP_HOME/bin
 
+ENV TMPDIR /tmp
+RUN mkdir -p ${TMPDIR}
+
+
 ADD docker/scripts /home/lens/scripts
 #ADD docker/.bash_profile /
 
@@ -54,9 +58,6 @@ ADD docker/hadoop/hive-site.xml /tmp/
 RUN cp /tmp/hive-site.xml $HIVE_HOME/conf/
 #------------------------------------------------------------------------
 
-ENV TMPDIR /tmp
-ENV logdir /opt/inmobi/logs/mysql
-RUN mkdir -p ${logdir}
 
 
 RUN cd $TMPDIR && \
