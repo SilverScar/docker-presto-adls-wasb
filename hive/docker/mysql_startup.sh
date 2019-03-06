@@ -1,12 +1,11 @@
 #!/bin/bash
 
-yum clean all
-#RUN yum -y update
-yum -y install mysql-client mysql-server
-yum clean all
 
-sed -i -e"/^bind-address/d" /etc/mysql/my.cnf
-sed -i -e "s/^port\s*=\s*3306/port = 8032/g" /etc/mysql/my.cnf
+#RUN yum -y update
+yum -y update; yum -y install mysql-client mysql-server; yum clean all
+
+#sed -i -e"/^bind-address/d" /etc/mysql/my.cnf
+#sed -i -e "s/^port\s*=\s*3306/port = 8032/g" /etc/mysql/my.cnf
 
 
 

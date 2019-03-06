@@ -1,22 +1,22 @@
 #!/bin/bash
 
-export PRESTO_SERVER_DIR=/opt/presto/server
+export PRESTO_DIR=/opt/presto
 
 # Update config file with credentials for WASB and ADLS
-config=$PRESTO_SERVER_DIR/etc/catalog/adls-wasb-site.xml
+config=$PRESTO_DIR/etc/catalog/adls-wasb-site.xml
 
 
 sed -i -e "s/AZURE_STORAGE_ACCOUNT_NAME/${AZURE_STORAGE_ACCOUNT_NAME}/g" $config
 sed -i -e "s#AZURE_STORAGE_ACCOUNT_KEY#${AZURE_STORAGE_ACCOUNT_KEY}#g" $config
 
 # generate unique node.id
-sed -i -e "s/__uuidgen__/$(uuidgen)/g" $PRESTO_SERVER_DIR/etc/node.properties
+sed -i -e "s/__uuidgen__/$(uuidgen)/g" $PRESTO_DIR/etc/node.properties
 
 # Create additional catalogs...
 
 # Azure CosmosDB with MongoAPI
 if [ -n "$MONGODB_SEEDS" ]; then
-cat > $PRESTO_SERVER_DIR/etc/catalog/cosmosdb.properties <<EOF
+cat > $PRESTO_DIR/etc/catalog/cosmosdb.properties <<EOF
 connector.name=mongodb
 mongodb.seeds=$MONGODB_SEEDS
 mongodb.credentials=$MONGODB_CREDENTIALS
@@ -26,7 +26,7 @@ fi
 
 # Azure SQL Database
 if [ -n "$SQLSERVER_JDBC_URL" ]; then
-cat > $PRESTO_SERVER_DIR/etc/catalog/azuresql.properties <<EOF
+cat > $PRESTO_DIR/etc/catalog/azuresql.properties <<EOF
 connector.name=sqlserver
 connection-url=$SQLSERVER_JDBC_URL
 connection-user=$SQLSERVER_USERNAME
@@ -36,7 +36,7 @@ fi
 
 # MySQL 
 if [ -n "$MYSQL_JDBC_URL" ]; then
-cat > $PRESTO_SERVER_DIR/etc/catalog/mysql.properties <<EOF
+cat > $PRESTO_DIR/etc/catalog/mysql.properties <<EOF
 connector.name=mysql
 connection-url=$MYSQL_JDBC_URL
 connection-user=$MYSQL_USERNAME
@@ -46,7 +46,7 @@ fi
 
 # PostreSQL 
 if [ -n "$POSTGRESQL_JDBC_URL" ]; then
-cat > $PRESTO_SERVER_DIR/etc/catalog/postgresql.properties <<EOF
+cat > $PRESTO_DIR/etc/catalog/postgresql.properties <<EOF
 connector.name=postgresql
 connection-url=$POSTGRESQL_JDBC_URL
 connection-user=$POSTGRESQL_USERNAME
