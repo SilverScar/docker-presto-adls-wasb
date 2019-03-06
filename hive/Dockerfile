@@ -50,8 +50,7 @@ RUN yum erase -y jdk
 ADD docker/jdk-8u181-linux-x64.rpm /tmp/
 
 RUN	cd /tmp && \
-	rpm -i jdk-8u131-linux-x64.rpm && \
-	rm jdk-8u131-linux-x64.rpm
+	rpm -i jdk-8u131-linux-x64.rpm 
 
 EXPOSE 9083 8088 3306 8080
 
