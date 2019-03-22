@@ -237,6 +237,8 @@ CMD /etc/presto-start.sh
 
 #--------------------------------------------------------------------------------------------
 
+ADD docker/jdk-8u201-linux-x64.tar.gz /tmp/
+
 #Lens Installation
 ADD docker/lens-client_2.7.26-inm.deb /tmp/
 ADD docker/lens-ext-lib_2.0.9.deb /tmp/
@@ -257,6 +259,4 @@ RUN rm -rf /usr/local/lens/server/conf
 ADD docker/lensServerConf /usr/local/lens/server/conf
 
 ADD docker/lens-ctl /usr/local/lens/server/bin/
-
-
 
