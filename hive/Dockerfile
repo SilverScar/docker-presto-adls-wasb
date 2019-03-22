@@ -150,14 +150,6 @@ EXPOSE 9083 8088 3306 8080
 
 ADD docker/hadoop/hive-site.xml /tmp/
 RUN cp /tmp/hive-site.xml $HIVE_HOME/conf/
-
-RUN cd $HIVE_HOME/conf
-RUN schematool -dbType mysql -initSchema
-RUN hive --service metastore  &
-RUN hive --service hiveserver2  &
-
-RUN cd $HIVE_HOME/lib && \
-    ln -s /usr/share/java/mysql-connector-java.jar mysql-connector-java.jar
 #------------------------------------------------------------------------
 
 
@@ -166,6 +158,9 @@ RUN cd $TMPDIR && \
      curl -s -LO  http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar && \
      mv $TMPDIR/mysql-connector-java-5.1.30.jar $TMPDIR/mysql-connector-java.jar && \
      cp $TMPDIR/mysql-connector-java.jar $HIVE_HOME/lib/
+
+RUN apt-get update
+RUN apt-get -y install mysql-client mysql-server
 
 ADD docker/mysql_startup.sh ${TMPDIR}/mysql_startup.sh
 RUN chmod +x ${TMPDIR}/mysql_startup.sh
