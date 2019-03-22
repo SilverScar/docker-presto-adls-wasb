@@ -1,0 +1,2 @@
+*.lens.session.cluster.user=clusteruser2
+*.mapred.job.queue.name=default

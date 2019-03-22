@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--><?xml-stylesheet type="text/xsl" href="configuration.xsl"?><configuration>
+
+<property>
+  <name>hive.metastore.uris</name>
+  <value>thrift://localhost:9083</value>
+  <description>IP address (or fully-qualified domain name) and port of the metastore host</description>
+</property>
+
+<property>
+ <name>lens.driver.hive.connection.class</name>
+ <value>org.apache.lens.driver.hive.RemoteThriftConnection</value>
+</property>
+
+<property>
+ <name>hive.server2.thrift.bind.host</name>
+ <value>localhost</value>
+</property>
+
+<property>
+ <name>hive.server2.thrift.port</name>
+ <value>10000</value>
+</property>
+
+
+<property>
+  <name>hive.server2.thrift.client.retry.limit</name>
+  <value>3</value>
+  <description>Number of times to retry a Thrift service call upon failure </description>
+</property>
+
+<property>
+  <name>hive.server2.thrift.client.connect.retry.limit</name>
+  <value>3</value>
+  <description>Number of times to retry a connection to a Thrift hive server</description>
+</property>
+
+<property>
+  <name>hive.server2.thrift.client.retry.delay.seconds</name>
+  <value>1</value>
+  <description>Number of seconds the client should wait between connection attempts.</description>
+</property>
+
+<property>
+    <name>hive.task.progress</name>
+    <value>true</value>
+</property>
+
+<property>
+  <name>hive.server2.thrift.client.user</name>
+  <value>dataqa</value>
+</property> 
+
+<property>
+  <name>hive.server.tcp.keepalive</name>
+  <value>true</value>
+  <description>TCP Keep alive socket option for HiveServer connection</description>
+</property>
+
+<property>
+  <name>hive.server.read.socket.timeout</name>
+  <value>60</value>
+  <description>Socket timeout for the client connection</description>
+</property>
+
+  <property>
+    <name>lens.cube.query.driver.supported.storages</name>
+    <value>local</value>
+  </property>
+
+<property>
+    <name>lens.cube.query.join.type</name>
+    <value>LEFTOUTER</value>
+    <description>Whether to enable persistent resultset on the driver for queries</description>
+  </property>
+
+ 
+
+<property>
+<name>lens.cube.query.time.range.writer.class</name>
+<value>org.apache.lens.cube.parse.AbridgedTimeRangeWriter</value>
+<description>The timerange writer class which specifies how the resolved partitions in timeranges should be written in final query. Available writers are org.apache.lens.cube.parse.ORTimeRangeWriter org.apache.lens.cube.parse.BetweenTimeRangeWriter, org.apache.lens.cube.parse.AbridgedTimeRangeWriter</description>
+</property>
+
+
+<property>
+  <name>lens.driver.hive.query.hook.class</name>
+  <value>com.inmobi.lens.query.hooks.HiveDriverQueryConfigChanger</value>
+  <description>The query hook class for hive driver.
+  </description>
+</property> 
+
+<property>
+  <name>lens.driver.hive.waiting.queries.selection.policy.factories</name>
+  <value>org.apache.lens.server.api.query.collect.DriverSpecificWaitingQueriesSelectionPolicyFactory</value>
+  <description>The query hook class for hive driver.
+  </description>
+</property>
+
+ <property>
+    <name>hive.input.format</name>
+    <value>org.apache.hadoop.hive.ql.io.HiveInputFormat</value>
+  </property>
+  
+  
+  <property>
+    <name>lens.driver.hive.query.launching.constraint.factories</name>
+    <value>org.apache.lens.server.api.query.constraint.MaxConcurrentDriverQueriesConstraintFactory</value>
+  </property>
+  
+
+  
+
+  
+
+
+
+
+
+<property>
+    <name>lens.driver.hive.priority.ranges</name>
+    <value>HIGH,7,NORMAL,30,LOW,90,VERY_LOW</value>
+  </property>
+<property>
+    <name>driver.max.concurrent.launched.queries</name>
+    <value>1</value>
+  </property>
+</configuration>

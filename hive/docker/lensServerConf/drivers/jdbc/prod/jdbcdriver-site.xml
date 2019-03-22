@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+--><?xml-stylesheet type="text/xsl" href="configuration.xsl"?><configuration>
+  <property>
+    <name>lens.driver.jdbc.driver.class</name>
+    <value>com.vertica.jdbc.Driver</value>
+  </property>
+<property>
+    <name>lens.driver.jdbc.db.uri</name>
+    <value>jdbc:vertica://verticadb.dfw1.inmobi.com:5433/verticadb</value>
+  </property>
+  <property>
+    <name>lens.driver.jdbc.db.user</name>
+    <value>dbreadonly</value>
+  </property>
+  <property>
+    <name>lens.driver.jdbc.db.password</name>
+    <value>read@InMobi16</value>
+  </property>
+  <property>
+    <name>lens.cube.query.driver.supported.storages</name>
+    <value>uh1_ib,dfw1_dwh,dfw1_dwh_pe,dfw1_dwh_pi</value>  
+</property>
+<property>
+    <name>lens.driver.jdbc.explain.keyword</name>
+    <value>explain</value>
+  </property>
+  <property>
+    <name>lens.driver.jdbc.explain.before.select</name>
+    <value>true</value>
+  </property>
+<property>
+    <name>lens.cube.query.join.type</name>
+    <!--value>INNER</value-->
+    <value>LEFTOUTER</value>
+    <description>Whether to enable persistent resultset on the driver for queries</description>
+  </property>
+<property>
+  <name>lens.driver.jdbc.enable.resultset.streaming.retrieval</name>
+  <value>false</value>
+  <description>Enable row by row streaming retrieval of result set</description>
+</property>
+
+<property>
+    <name>lens.driver.jdbc.regex.replacement.values</name>
+
+    <value>datediff\((.*?)\,(.*?)\)=-\(datediff\('day'\,$1\,$2\)\),collect_set=public.group_concat,to_date=date,weekofyear=week_iso,dayofweek\(\((.*?)\)\)=to_char($1\, 'DAY'), format_number=format, date_sub\((.*?)\,\s*([0-9]+\s*)\)=date_sub($1\, interval $2 day), date_add\((.*?)\,\s*([0-9]+\s*)\)=date_add($1\, interval $2 day),monthname\(\((.*?)\)\)=to_char($1\, 'Month'),\\'=''</value>
+
+
+    <!--value>to_date\((.*?)\)=date\($1\),datediff\((.*?)\,(.*?)\)=-\(datediff\('day'\,$1\,$2\)\),collect_set=public.group_concat,weekofyear=week_iso,dayofweek=dayofweek_iso, format_number=format, date_sub\((.*?)\,\s*([0-9]+\s*)\)=date_sub($1\, interval $2 day), date_add\((.*?)\,\s*([0-9]+\s*)\)=date_add($1\, interval $2 day),monthname\(\((.*?)\)\)=to_char($1\, 'Month'),\\'=''</value-->
+    <description>Rewriting the HQL to optimized sql queries</description>
+  </property>
+<property>
+  <name>lens.driver.jdbc.query.rewriter</name>
+  <value>com.inmobi.lens.query.rewrite.vertica.VerticaRewriter</value>
+  <!--value>org.apache.lens.driver.jdbc.ColumnarSQLRewriter</value-->
+  <description>Rewriting the HQL to optimized sql queries</description>
+</property>
+<property>
+<name>lens.cube.query.time.range.writer.class</name>
+<!--value>org.apache.lens.cube.parse.ORTimeRangeWriter</value-->
+<value>org.apache.lens.cube.parse.AbridgedTimeRangeWriter</value>
+<!-- <value>org.apache.lens.cube.parse.BetweenTimeRangeWriter</value> -->
+</property>
+  
+<property>
+    <name>lens.cube.query.rewrite.dim.filter.to.fact.filter</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>lens.cube.query.bridge.table.field.aggregator</name>
+    <value>public.group_concat</value>
+    <description>The field aggregator function to be used for aggregating fields from bridge tables. Would be used
+      only when flattening is enabled. The value can be passed for each query. During typical deployments it would
+      be passed for each driver, as the function could be different for each driver.
+    </description>
+  </property>
+
+  <property>
+    <name>lens.cube.query.pick.lightest.fact.first</name>
+    <value>true</value>
+    <description>If set to true, lightest fact will be resolved first than resolving storages. Otherwise, storages will be resolved to check all partitions exist and then pick lightest fact among candidates</description>
+  </property>
+
+
+<property>
+    <name>driver.max.concurrent.launched.queries</name>
+    <value>10</value>
+  </property>
+  <property>
+    <name>lens.driver.jdbc.pool.max.size</name>
+    <value>10</value>
+  </property>
+  
+<property>
+    <name>disallowed.users</name>
+    <value>clarity</value>
+  </property>
+  <property>
+    <name>query.hook.classes</name>
+    <value>org.apache.lens.server.api.driver.hooks.UserBasedQueryHook</value>
+  </property>
+  <property>
+    <name>lens.query.enable.persistent.resultset</name>
+    <value>true</value>
+  </property>
+</configuration>
+
+
+
+
+
+
+

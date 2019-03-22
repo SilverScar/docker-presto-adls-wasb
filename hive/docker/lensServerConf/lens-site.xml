@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?><configuration>
+
+<property>
+  <name>lens.server.drivers</name>
+  <value>hive:org.apache.lens.driver.hive.HiveDriver,jdbc:org.apache.lens.driver.jdbc.JDBCDriver</value>
+</property>
+
+<property>
+  <name>lens.server.base.url</name>
+  <value>http://bizops-rna-engg1011.common.blr1.inmobi.com:8098/lensapi/</value>
+</property>
+
+<property>
+    <name>lens.server.ui.base.uri</name>
+    <value>http://bizops-rna-engg1011.common.blr1.inmobi.com:19999/</value>
+    <description>The base url for the Grill UI Server</description>
+</property>
+
+<property>
+    <name>lens.query.enable.metrics.per.query</name>
+    <value>false</value>
+    <description>Generates gauge metrics for each query to measure time taken with unique id appended for each query.
+    Should be enabled only for performance measurements. Should not be enabled in day to day production environment.
+    </description>
+  </property>
+
+ <property>
+    <name>lens.server.enable.resource.method.metering</name>
+    <value>true</value>
+    <description>Whether to Enable metering for all resource methods.</description>
+  </property>
+
+
+<property>
+<name>lens.server.db.validation.query</name>
+<value>select 1</value>
+<description>BasicDatasource has a config parameter called validationQuery. This query is run before passing
+the Datasource to the application to verify if connection is valid.\
+{{
+{http://commons.apache.org/proper/commons-dbcp/configuration.html}
+dbcp configuration}} \
+{{
+{http://stackoverflow.com/questions/10684244/dbcp-validationquery-for-different-databases}
+validationquery for different databases}} \
+</description>
+</property>
+
+<property>
+  <name>lens.server.db.driver.name</name>
+  <value>com.mysql.jdbc.Driver</value>
+  <description>Database driver for database where Finished queries have to be stored.
+    Also used for database based user config loaders</description>
+</property>
+
+
+<property>
+  <name>lens.server.db.jdbc.url</name>
+  <value>jdbc:mysql://localhost:8032/lens</value>
+  <description>JDBC URL where the database for storing finished queries is located.
+    Also used for database based user config loaders</description>
+</property>
+
+<property>
+  <name>lens.server.db.jdbc.user</name>
+  <value>lens</value>
+  <description>JDBC User for Finished queries table. Also used for database based user config loaders</description>
+</property>
+
+<property>
+ <name>lens.server.db.jdbc.pass</name>
+ <value>lens</value>
+ <description>JDBC Password for Finished queries table. Also used for database based user config loaders</description>
+</property>
+
+<property>
+  <name>lens.server.metrics.reporting.period</name>
+  <value>10</value>
+  <description>The reporting period for metrics. The value is in seconds</description>
+</property>
+
+<property>
+  <name>lens.server.restart.enabled</name>
+  <value>true</value>
+  <description>If flag is enabled, all the services will be persisted to persistent
+ location passed. </description>
+</property>
+
+<property>
+  <name>lens.server.recover.onrestart</name>
+  <value>true</value>
+  <description>If the flag is enabled, all the services will be started from last
+ saved state, if disabled all the services will start afresh</description>
+</property>
+
+ <property>
+  <name>lens.server.persist.location</name>
+  <value>hdfs://bizops-rna-engg1011.common.blr1.inmobi.com:8020/tmp/lensserver</value>
+</property>
+
+<!--
+<property>
+  <name>lens.server.session.timeout.seconds</name>
+  <value>86400</value>
+  <description>Lens session timeout in seconds.If there is no activity on
+ the session for this period then the session will be closed.Default timeout is one day.</description>
+</property>
+-->
+<property>
+  <name>lens.server.session.timeout.seconds</name>
+  <value>86400</value>
+  <description>Lens session timeout in seconds.If there is no activity on
+ the session for this period then the session will be closed.Default timeout is one day.</description>
+</property>
+<property>
+  <name>lens.server.statistics.store.class</name>
+  <value>org.apache.lens.server.stats.store.log.LogStatisticsStore</value>
+  <description>Default implementation of class used to persist Lens Statistics.</description>
+</property>
+
+<property>
+  <name>lens.server.statistics.log.rollover.interval</name>
+  <value>3600000</value>
+  <description>Default rate which log statistics store scans for rollups in milliseconds.</description>
+</property>
+
+<property>
+    <name>lens.server.statistics.warehouse.dir</name>
+    <value>hdfs://bizops-rna-engg1011.common.blr1.inmobi.com:8020/user/hive/warehouse</value>
+  </property>
+
+<property>
+  <name>lens.server.statistics.db</name>
+  <value>lensstats</value>
+  <description>Database to which statistics tables are created and partitions are added.</description>
+</property>
+
+<!-- Finished Query Purging Configurations -->
+<property>
+  <name>lens.server.max.finished.queries</name>
+  <value>100</value>
+  <description>Maximum number of finished queries which lens server will keep in memory before purging.</description>
+</property>
+
+<property>
+  <name>lens.server.domain</name>
+  <value>inmobi.com</value>
+  <description>Server domain. This will be used in authentication and Sending emails to users.
+    For the server, the username will be without domain and domain will come through conf.</description>
+</property>
+
+
+<property>
+  <name>lens.server.snapshot.interval</name>
+  <value>10000</value>
+  <description>Snapshot interval time in miliseconds for saving lens server state.</description>
+</property>
+
+<property>
+  <name>hive.server2.authentication</name>
+  <value>NONE</value>
+  <description>
+    Client authentication types.
+       NONE: no authentication check
+       LDAP: LDAP/AD based authentication
+       KERBEROS: Kerberos/GSSAPI authentication
+       CUSTOM: Custom authentication provider
+               (Use with property hive.server2.custom.authentication.class)
+       PAM: Pluggable authentication module.
+  </description>
+</property>
+
+<property>
+  <name>hive.server2.authentication.ldap.url</name>
+  <value/>
+  <description>
+    LDAP connection URL
+  </description>
+</property>
+
+<property>
+  <name>hive.server2.authentication.ldap.security.protocol</name>
+  <value>ssl</value>
+  <description>
+    Its value is a string determined by the service provider (e.g. "ssl").
+    If this property is unspecified, the behaviour is determined by the service provider.
+    It's value will be directly passed as "java.naming.security.protocol"
+  </description>
+</property>
+
+<property>
+  <name>hive.server2.authentication.ldap.baseDN</name>
+  <value/>
+  <description>
+    LDAP base DN
+  </description>
+</property>
+
+<property>
+  <name>hive.server2.authentication.ldap.Domain</name>
+  <value/>
+  <description>
+    The ldap domin
+  </description>
+</property>
+
+
+<property>
+  <name>lens.cube.query.promote.select.togroupby</name>
+  <value>true</value>
+</property>
+
+<property>
+  <name>lens.cube.query.promote.groupby.toselect</name>
+  <value>true</value>
+</property>
+
+
+<property>
+  <name>lens.query.enable.persistent.resultset</name>
+  <value>true</value>
+  <description>Whether to enable persistent resultset for queries. When enabled,
+ server will fetch results from driver, custom format them if any and store in
+ a configured location. The file name of query output is queryhandle-id, with
+ configured extensions</description>
+</property>
+
+
+<property>
+  <name>lens.query.result.parent.dir</name>
+  <value>hdfs://bizops-rna-engg1011.common.blr1.inmobi.com:8020/tmp/lensreports</value>
+  <description>The directory in which lens server will persist its state when it is
+ going down. The location be on any Hadoop compatible file system. Server will read from
+ the location when it is restarted and recovery is enabled. So, Server should have
+ both read and write permissions to the location
+  </description>
+</property>
+
+<property>
+  <name>lens.query.result.output.dir.format</name>
+  <value>ROW FORMAT SERDE 'org.apache.lens.lib.query.CSVSerde' STORED AS TEXTFILE</value>
+  <description>The format of the output if result is persisted in hdfs. The format
+ should be expressed in HQL.</description>
+</property>
+
+<property>
+  <name>lens.query.hdfs.output.path</name>
+  <value>hdfsout</value>
+  <description>The directory under the parent result directory, in which HiveDriver
+ will persist the results, if persisting by driver is enabled. This directory
+ should exist and should have world writable permissions sothat all users will
+ be able put query outputs here.</description>
+</property>
+
+
+<property>
+  <name>lens.query.output.enable.compression</name>
+  <value>true</value>
+  <description>Whether to compress the query result output</description>
+</property>
+
+<property>
+  <name>lens.query.output.write.header</name>
+  <value>true</value>
+  <description>Whether to write header as part of query result formatting. When
+ enabled the user given header will be added in case of driver persisted results,
+ and column names chosen will be added as header for in-memory results. </description>
+</property>
+
+<property>
+  <name>lens.query.output.write.footer</name>
+  <value>true</value>
+  <description>Whether to write footer as part of query result. When enabled,
+ total number of rows will be written as part of header.</description>
+</property>
+
+
+<property>
+  <name>lens.query.result.size.format.threshold</name>
+  <value>10737418240</value>
+  <description>The maximum allowed size of the query result. If exceeds, no
+ server side formatting would be done.</description>
+</property>
+
+<property>
+  <name>lens.query.result.split.multiple</name>
+  <value>true</value>
+  <description>Whether to split the result into multiple files. If enabled,
+ each file will be restricted to max rows configured. All the files will be
+ available as zip.</description>
+</property>
+
+<property>
+  <name>lens.query.result.split.multiple.maxrows</name>
+  <value>100000</value>
+  <description>The maximum number of rows allowed in each file, when splitting
+ the result into multiple files is enabled.</description>
+</property>
+
+<property>
+  <name>hive.metastore.uris</name>
+  <value>thrift://localhost:9083</value>
+  <description>IP address (or fully-qualified domain name) and port of the metastore host</description>
+</property>
+
+
+<property>
+  <name>hive.metastore.client.socket.timeout</name>
+  <value>300</value>
+  <description>MetaStore Client socket timeout in seconds</description>
+</property>
+
+<property>
+  <name>hive.metastore.batch.retrieve.max</name>
+  <value>100</value>
+  <description>Maximum number of objects (tables/partitions) can be retrieved from metastore in one batch. The higher the number, the less the number of round trips is needed to the Hive metastore server, but it may also cause higher memory requirement at the client side.</description>
+</property>
+
+<property>
+  <name>hive.metastore.batch.retrieve.table.partition.max</name>
+  <value>500</value>
+  <description>Maximum number of table partitions that metastore internally retrieves in one batch.</description>
+</property>
+
+
+ <property>
+    <name>lens.cube.query.fail.if.data.partial</name>
+    <value>true</value>
+    <description>Whether to fail the query of data is partial</description>
+  </property>
+
+
+ <property>
+    <name>lens.cube.query.process.time.partition.column</name>
+    <value>pt</value>
+    <description>The column name which is a process time column. If process time column is specified, query rewriter will look ahead the partitions of other timed dimensions inside this column.</description>
+  </property>
+<property>
+    <name>lens.server.ui.enable</name>
+    <value>false</value>
+  </property>
+
+<property>
+    <name>lens.server.database.resource.dir</name>
+    <value>file:///home/lens/dbresources</value>
+  </property>
+
+<property>
+    <name>lens.cube.query.enable.storages.union</name>
+    <value>true</value>
+  </property>
+
+<property>
+<name>lens.cube.query.valid.fact.hybrid_rm_engmnt_fact.storagetables</name>
+<value>disable</value>
+</property>
+
+ <property>
+    <name>lens.server.user.resolver.type</name>
+    <value>PROPERTYBASED</value>
+  </property>
+  <property>
+    <name>lens.server.user.resolver.propertybased.filename</name>
+    <value>/usr/local/lens/server/conf/user-queue</value>
+  </property>
+
+<property>
+    <name>lens.server.max.sessions.per.user</name>
+    <value>500</value>
+  </property>
+
+   <property>
+     <name>lens.server.scheduler.store.class</name>
+     <value>org.apache.lens.server.scheduler.SchedulerDAO$SchedulerMySQLDBStore</value>
+   </property>
+
+
+   <property>
+     <name>lens.server.servicenames</name>
+     <!--value>session,query,savedquery,metastore,scheduler,alarm,quota</value-->
+     <value>session,query,savedquery,metastore,quota</value>
+     <description>These services would be started in the specified order when lens-server starts up</description>
+   </property>
+  
+   <property>
+    <name>lens.server.alarm.service.impl</name>
+    <value>org.apache.lens.server.scheduler.AlarmService</value>
+    <description>Implementation class for alarm service</description>
+  </property>
+
+
+   <property>
+     <name>lens.server.ws.resourcenames</name>
+    <!--value>session,metastore,query,savedquery,quota,index,log,scheduler</value-->
+    <value>session,metastore,query,savedquery,quota,index,log</value>
+     <description>These JAX-RS resources would be started in the specified order when lens-server starts up</description>
+   </property>
+
+<property>
+ <name>lens.server.savedquery.jdbc.dialectclass</name>
+ <value>org.apache.lens.server.query.save.SavedQueryDao$MySQLDialect</value>
+ <description>JDBC Password for Finished queries table. Also used for database based user config loaders</description>
+</property>
+
+<property>
+    <name>lens.server.duplicate.query.allowed</name>
+    <value>false</value>
+  </property>
+
+<property>
+    <name>lens.server.state.persistence.interval.millis</name>
+    <value>50000</value>
+  </property>
+  
+
+<property>
+    <name>hive.support.sql11.reserved.keywords</name>
+    <value>false</value>
+  </property>
+
+
+<property>
+<name>hive.serdes.using.metastore.for.schema</name> <value>org.apache.hadoop.hive.ql.io.orc.OrcSerde,org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe,org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe,org.apache.hadoop.hive.serde2.dynamic_type.DynamicSerDe,org.apache.hadoop.hive.serde2.MetadataTypedColumnsetSerDe,org.apache.hadoop.hive.serde2.columnar.LazyBinaryColumnarSerDe,org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe,org.apache.hadoop.hive.serde2.lazybinary.LazyBinarySerDe,com.inmobi.yoda.serde.LazyMetaColumnarSerde</value>
+</property>
+
+
+   <property>
+    <name>hive.server2.idle.session.timeout</name>
+    <value>0</value>
+    <description>Session should be closed by lens. There would be a mismatch when hive has closed session due to timeout
+    and lens is not aware of that.</description>
+  </property>
+    <property>
+    <name>hive.server2.idle.operation.timeout</name>
+    <value>0</value>
+    <description>Closing of operations should be handled by lens. Hive should not invalidate operations upon timeout
+    </description>
+  </property>
+
+    <property>
+    <name>hive.server2.session.check.interval</name>
+    <value>0</value>
+    <description>Closing of operations should be handled by lens. Hive should not invalidate operations upon timeout
+    </description>
+  </property>
+
+  <property>
+    <name>lens.server.query.comparator.classes</name>
+    <value>org.apache.lens.server.api.query.comparators.MoreRetriesFirstComparator,org.apache.lens.server.api.query.comparators.QueryPriorityComparator,org.apache.lens.server.api.query.comparators.FIFOQueryComparator</value>
+    <description>The Query cost parser class. Default query cost class used is FactPartitionBasedQueryCost</description>
+  </property>
+
+
+<property>
+    <name>lens.server.inmemory.resultset.ttl.secs</name>
+    <value>20</value>
+  </property>
+  
+
+
+
+  <property>
+    <name>lens.cube.metastore.enable.datacompleteness.check</name>
+    <value>false</value>
+    <description>This property is to enable Data Completeness Checks while resolving partitions.</description>
+  </property>
+
+  <property>
+    <name>lens.cube.metastore.completeness.checker.class</name>
+    <value>com.inmobi.lens.data.completeness.DataCompletenessCheckerImpl</value>
+    <description>The class that implements the DataCompletenessChecker Interface. This will take effect if the flag
+      "lens.cube.metastore.enable.datacompleteness.check" is set.
+    </description>
+  </property>
+
+  <property>
+    <name>lens.cube.query.completeness.threshold</name>
+    <value>95</value>
+    <description>The query will fail if data completeness is less than the set threshold given that the flag
+      "lens.cube.query.fail.if.data.partial" is set as true</description>
+  </property>
+
+  <property>
+    <name>lens.data.completeness.api.url</name>
+    <value>http://dp2001.grid.uh1.inmobi.com:8080/firstapp/api/hourly/completeness</value>
+  </property>
+
+
+
+
+
+<property>
+    <name>lens.server.querypurger.sleep.interval</name>
+    <value>5000</value>
+  </property>
+<property>
+    <name>lens.query.enable.mail.notify</name>
+    <value>true</value>
+  </property>
+<property>
+  <name>lens.server.user.group.type</name>
+  <value>AD_GROUP</value>
+</property>
+
+<property>
+  <name>lens.server.user.group.db.keys</name>
+  <value>lens.session.user.groups</value>
+</property>
+
+<property>
+  <name>lens.server.user.group.db.query</name>
+  <value>select groups from user_groups where user=? and expiry>?</value>
+</property>
+
+<property>
+  <name>lens.server.user.group.cache.expiry.inhours</name>
+  <value>2</value>
+</property>
+
+<property>
+  <name>lens.server.ad.server.endpoint.value</name>
+  <value>http://whobot:Na9JrqpmC7gWMoacJr5Iv6AMIULZrQSU@who.corp.inmobi.com/api/v1/user/</value>
+</property>
+
+<property>
+  <name>lens.server.user.group.db.insert.sql</name>
+  <value>replace into user_groups (user, groups, expiry) values (?, ?, ?)</value>
+</property>
+
+<property>
+  <name>lens.server.user.group.db.delete.sql</name>
+  <value>delete from user_groups where user=?</value>
+</property>
+
+<property>
+  <name>lens.cube.metastore.enable.authorization.check</name>
+  <value>true</value>
+</property>
+
+
+
+<property>
+  <name>lens.server.user.group.lookup.fields</name>
+  <value>memberOf</value>
+</property>
+
+<property>
+  <name>lens.server.ad.server.username.value</name>
+  <value>whobot</value>
+</property>
+
+<property>
+  <name>lens.server.ad.server.pwd.value</name>
+  <value>Na9JrqpmC7gWMoacJr5Iv6AMIULZrQSU</value>
+</property>
+
+<property>
+  <name>authorizer.class</name>
+  <value>org.apache.lens.cube.authorization.RangerLensAuthorizer</value>
+</property>
+
+
+</configuration>
+
+

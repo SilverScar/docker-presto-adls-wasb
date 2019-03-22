@@ -232,3 +232,22 @@ WORKDIR $PRESTO_DIR
 
 CMD /etc/presto-start.sh
 
+#--------------------------------------------------------------------------------------------
+
+#Lens Installation
+RUN cd $TMPDIR && \
+    wget https://artifactory-maven.corp.inmobi.com/artifactory/apt-repo/pool/trusty/lens-client_2.7.26-inm.deb && \
+    wget https://artifactory-maven.corp.inmobi.com/artifactory/apt-repo/pool/trusty/lens-ext-lib_2.0.9.deb && \
+    wget https://artifactory-maven.corp.inmobi.com/artifactory/apt-repo/pool/trusty/lens-internal_1.1.139.deb && \
+    wget https://artifactory-maven.corp.inmobi.com/artifactory/apt-repo/pool/trusty/lens-server_2.7.26-inm.deb && \
+    dpkg -i lens-client_2.7.26-inm.deb && \
+    dpkg -i lens-ext-lib_2.0.9.deb && \
+    dpkg -i lens-internal_1.1.139.deb && \
+    dpkg -i lens-server_2.7.26-inm.deb
+
+RUN rm -rf /usr/local/lens/server/conf
+
+ADD docker/lensServerConf /usr/local/lens/server/conf
+
+ADD docker/lens-ctl /usr/local/lens/server/bin/
+
