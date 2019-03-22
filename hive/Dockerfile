@@ -150,6 +150,14 @@ EXPOSE 9083 8088 3306 8080
 
 ADD docker/hadoop/hive-site.xml /tmp/
 RUN cp /tmp/hive-site.xml $HIVE_HOME/conf/
+
+RUN cd $HIVE_HOME/conf
+RUN schematool -dbType mysql -initSchema
+RUN hive --service metastore  &
+RUN hive --service hiveserver2  &
+
+RUN cd $HIVE_HOME/lib && \
+    ln -s /usr/share/java/mysql-connector-java.jar mysql-connector-java.jar
 #------------------------------------------------------------------------
 
 
@@ -254,4 +262,6 @@ RUN rm -rf /usr/local/lens/server/conf
 ADD docker/lensServerConf /usr/local/lens/server/conf
 
 ADD docker/lens-ctl /usr/local/lens/server/bin/
+
+
 
