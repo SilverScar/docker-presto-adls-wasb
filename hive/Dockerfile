@@ -50,7 +50,7 @@ ADD hadoop-files/yarn-site.xml $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
 
 #Fixing Java path
 RUN mkdir -p /usr/java/default/bin
-RUN ln -s /usr/lib/jvm/java-8-oracle/jre/bin /usr/java/default/bin/java
+RUN ln -s /usr/lib/jvm/java-8-oracle/jre/bin/java /usr/java/default/bin/java
 
 RUN $HADOOP_PREFIX/bin/hdfs namenode -format
 #
