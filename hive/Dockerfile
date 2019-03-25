@@ -1,4 +1,4 @@
-FROM dockerhub.ops.inmobi.com/production-engg/docker-openjdk-jvm8-ubuntu-16.04:v2-20180919-2
+FROM dockerhub.ops.inmobi.com/production-engg/docker-jvm8-ubuntu-16.04:v2-20181207-9
 MAINTAINER SequenceIQ
 
 #USER root
