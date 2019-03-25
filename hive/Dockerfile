@@ -49,10 +49,10 @@ ADD hadoop-files/mapred-site.xml $HADOOP_PREFIX/etc/hadoop/mapred-site.xml
 ADD hadoop-files/yarn-site.xml $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
 
 #Fixing Java path
-#RUN mkdir -p /usr/java/default/bin
-#RUN ln -s /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java /usr/java/default/bin/java
+RUN mkdir -p /usr/java/default/bin
+RUN ln -s /usr/lib/jvm/java-8-oracle/jre/bin /usr/java/default/bin/java
 
-#RUN $HADOOP_PREFIX/bin/hdfs namenode -format
+RUN $HADOOP_PREFIX/bin/hdfs namenode -format
 #
 ## fixing the libhadoop.so like a boss
 #RUN rm -rf /usr/local/hadoop/lib/native
